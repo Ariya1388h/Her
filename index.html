@@ -7,7 +7,7 @@
     <meta name="description" content="A surprise website for Seti">
     <meta property="og:title" content="Seti ❤️ - Our Story">
     <meta property="og:description" content="A love story in motion">
-    <meta name="theme-color" content="#dc143c">
+    <meta name="theme-color" content="rose-900">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -23,10 +23,11 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #000f1f 0%, #001a35 50%, #000f1f 100%);
+            background: linear-gradient(135deg, #22415e 0%, #1a2642 50%, #102337 100%);
             background-attachment: fixed;
             color: #e2e8f0;
             overflow-x: hidden;
+            width: 100vw;
         }
 
         ::-webkit-scrollbar {
@@ -38,12 +39,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #dc143c, #ff6666);
+            background: linear-gradient(to bottom, #ad263a, #8b3a3a);
             border-radius: 6px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #c41230, #dc143c);
+            background: linear-gradient(to bottom, #ae1b1b, #6b2a2a);
         }
 
         @keyframes float {
@@ -74,7 +75,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(to right, #dc143c, #ff6666, #dc143c);
+            background: linear-gradient(to right, #d72640, #d71b24, #cf263f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -91,6 +92,7 @@
 
         .nav-btn {
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -98,8 +100,8 @@
         }
 
         .nav-btn.active {
-            background: rgba(220, 20, 60, 0.3);
-            color: rgb(255, 102, 102);
+            background: rgba(162, 77, 90, 0.3);
+            color: rgb(200, 122, 122);
         }
 
         .reason-card {
@@ -109,8 +111,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(220, 20, 60, 0.1) 0%, rgba(139, 0, 139, 0.1) 100%);
-            border: 1px solid rgba(220, 20, 60, 0.3);
+            background: linear-gradient(135deg, rgba(162, 77, 90, 0.1) 0%, rgba(107, 42, 42, 0.1) 100%);
+            border: 1px solid rgba(162, 77, 90, 0.25);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -118,19 +120,19 @@
 
         .reason-card:hover {
             transform: scale(1.05);
-            background: linear-gradient(135deg, rgba(220, 20, 60, 0.2) 0%, rgba(139, 0, 139, 0.2) 100%);
-            border-color: rgba(220, 20, 60, 0.6);
+            background: linear-gradient(135deg, rgba(162, 77, 90, 0.2) 0%, rgba(107, 42, 42, 0.2) 100%);
+            border-color: rgba(162, 77, 90, 0.5);
         }
 
         .timeline-dot {
             width: 16px;
             height: 16px;
-            background: #dc143c;
+            background: #a21a2e;
             border-radius: 50%;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
+            box-shadow: 0 0 20px rgba(162, 77, 90, 0.5);
         }
 
         .timeline-line {
@@ -138,21 +140,32 @@
             width: 4px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(to bottom, #dc143c, rgba(220, 20, 60, 0.3));
+            background: linear-gradient(to bottom, #922d3c, rgba(162, 77, 90, 0.2));
         }
 
         .progress-bar {
-            background: linear-gradient(to right, #dc143c, #ff6666);
+            background: linear-gradient(to right, #851f2e, #c87a7a);
             height: 8px;
             border-radius: 4px;
             transition: width 0.3s ease;
         }
+
+        @media (max-width: 640px) {
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-8px);
+            }
+            .timeline-line {
+                left: 0;
+                transform: translateX(-2px);
+            }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white">
+<body>
 
     <!-- Navigation -->
-    <nav id="nav" class="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-red-600/30">
+    <nav id="nav" class="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-amber-900/30">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-center gap-8 w-full">
             <button class="nav-btn active" onclick="scrollToSection('landing', 0)">Home</button>
             <button class="nav-btn" onclick="scrollToSection('story', 1)">Our Story</button>
@@ -160,78 +173,75 @@
         </div>
     </nav>
 
-    <!-- Theme Toggle -->
-    <button id="themeToggle" onclick="toggleTheme()" class="fixed top-6 right-6 z-50 px-4 py-2 bg-red-600/30 text-red-300 rounded-full hover:bg-red-600/50 transition">
-        🌙
-    </button>
-
     <!-- Floating Hearts -->
     <div id="heartsContainer"></div>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main>
         <!-- Landing Section -->
-        <section id="landing" class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-red-600/10 via-transparent to-purple-600/10"></div>
-            <div class="relative z-10 w-full animate-fade-in">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 gradient-text leading-tight animate-slide-in">
+        <section id="landing" class="min-h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 text-center relative overflow-hidden pt-16 md:pt-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-900/5 via-transparent to-slate-700/5"></div>
+            <div class="relative z-10 w-full max-w-3xl mx-auto animate-fade-in">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 sm:mb-8 gradient-text leading-tight animate-slide-in">
                     Seti
                 </h1>
-                <p class="text-xs sm:text-sm md:text-lg lg:text-2xl mb-6 sm:mb-8 text-gray-200 min-h-14 sm:min-h-16 md:min-h-20 flex items-center justify-center px-2 leading-relaxed">
+                <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-8 sm:mb-10 text-gray-300 leading-relaxed">
                     A journey of love, memories, and infinite reasons why you mean everything to me.
                 </p>
-                <div class="text-3xl sm:text-4xl md:text-5xl mb-8 sm:mb-12 space-y-2 sm:space-y-4">
-                    <div>❤️</div>
-                    <div class="text-xs sm:text-sm md:text-base text-gray-400">Click to begin our story</div>
+                <div class="text-4xl sm:text-5xl md:text-6xl mb-8 sm:mb-12">
+                    ❤️
                 </div>
-                <button onclick="scrollToSection('story', 1)" class="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-500 text-white font-bold rounded-full text-sm sm:text-base md:text-lg hover:shadow-lg hover:shadow-red-600/50 transition hover:scale-105">
+                <div class="text-xs sm:text-sm md:text-base text-gray-400 mb-8">
+                    Click to begin our story
+                </div>
+                <button onclick="scrollToSection('story', 1)" class="px-8 sm:px-10 py-3 sm:py-4 bg-gradient-to-r from-rose-700 to-rose-900 text-white font-bold rounded-full text-sm sm:text-base md:text-lg hover:shadow-lg hover:shadow-amber-900/50 transition hover:scale-105 inline-block">
                     Start the Journey
                 </button>
             </div>
-            <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-xl sm:text-2xl animate-float">
+            <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-2xl sm:text-3xl animate-float">
                 ⬇️
             </div>
         </section>
 
         <!-- Our Story Section -->
-        <section id="story" class="min-h-screen py-20 px-4 sm:px-6 relative">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Our Story</h2>
+        <section id="story" class="min-h-screen w-full py-20 px-4 sm:px-6 relative flex flex-col items-center justify-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 gradient-text w-full">Our Story</h2>
             
-            <div class="max-w-2xl mx-auto relative">
+            <div class="max-w-2xl mx-auto relative w-full">
                 <div class="timeline-line" style="height: 100%;"></div>
                 
-                <div id="timeline" class="space-y-12">
+                <div id="timeline" class="space-y-12 w-full">
                     <!-- Timeline items will be inserted here -->
                 </div>
             </div>
         </section>
 
         <!-- Reasons Section -->
-        <section id="reasons" class="min-h-screen py-20 px-4 sm:px-6">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 gradient-text">Why I Love You</h2>
+        <section id="reasons" class="min-h-screen w-full py-20 px-4 sm:px-6 flex flex-col items-center justify-center">
+            <div class="max-w-2xl mx-auto w-full">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 gradient-text">Why I Love You</h2>
                 
                 <div class="mb-8 flex items-center gap-4">
                     <div class="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
                         <div id="progressBar" class="progress-bar" style="width: 0%;"></div>
                     </div>
-                    <span id="reasonCounter" class="text-sm sm:text-base font-semibold">0/30</span>
+                    <span id="reasonCounter" class="text-sm sm:text-base font-semibold whitespace-nowrap">0/31</span>
                 </div>
 
-                <div id="reasonCard" class="reason-card mb-8 cursor-pointer text-lg sm:text-xl md:text-2xl">
+                <div id="reasonCard" class="reason-card mb-8 cursor-pointer text-lg sm:text-xl md:text-2xl w-full">
                     Click here to reveal a reason
                 </div>
 
                 <div class="text-center text-gray-400 text-sm">
-                    <p>And infinite more reasons...</p>
+                    <p>Every moment with you is worth it</p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="py-12 px-4 text-center text-gray-500 border-t border-red-600/20">
+        <footer class="w-full py-12 px-4 text-center text-gray-500 border-t border-amber-900/20">
             <p>Made with ❤️ for Seti</p>
-            <p class="text-sm mt-2">© 2024 Our Love Story. All moments cherished forever.</p>
+            <p class="text-sm mt-2">© 2026 Our Love Story. Ariya Hasanzadeh</p>
         </footer>
     </main>
 
@@ -239,27 +249,28 @@
         // Timeline Data
         const timelineData = [
             {
-                date: "November 9, 1403",
+                date: "1404/10/09",
                 title: "Got Closer",
-                emoji: "💕",
-                color: "from-red-600/20 to-purple-600/20"
+                emoji: "❤️",
+                color: "from-amber-900/20 to-rose-900/20"
             },
             {
-                date: "November 21, 1403",
-                title: "First Hug",
-                emoji: "🤗",
-                color: "from-red-600/20 to-pink-600/20"
+                date: "1404/10/21",
+                title: "First time we Hugged",
+                emoji: "🫂",
+                color: "from-rose-900/20 to-amber-900/20"
             },
             {
-                date: "November 6, 1405",
+                date: "1405/01/06",
                 title: "A Sweet Moment",
                 emoji: "💕",
-                color: "from-red-600/20 to-purple-600/20"
+                color: "from-amber-900/20 to-rose-900/20"
             }
         ];
 
         // Reasons Data
         const reasonsData = [
+            "Tap on me to start",
             "Your smile brightens my day",
             "You always know how to make me happy",
             "Your kindness inspires me",
@@ -287,13 +298,12 @@
             "You're my reason to smile",
             "You're my one and only true love",
             "You being you, yourself",
-            "Everything about YOU",
             "Your voice",
+            "Everything about YOU",
             "Simply because you're you"
         ];
 
         let currentReasonIndex = 0;
-        let isDark = true;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -309,16 +319,16 @@
             timeline.innerHTML = timelineData.map((item, index) => `
                 <div class="relative pl-12 sm:pl-0 animate-slide-in" style="animation-delay: ${index * 0.1}s">
                     <div class="timeline-dot"></div>
-                    <div class="bg-gradient-to-r ${item.color} border border-red-600/30 rounded-lg p-4 sm:p-6 text-left">
+                    <div class="bg-gradient-to-r ${item.color} border border-amber-900/30 rounded-lg p-4 sm:p-6 text-left">
                         <div class="text-2xl sm:text-3xl mb-2">${item.emoji}</div>
-                        <h3 class="text-lg sm:text-xl font-bold text-red-300 mb-1">${item.title}</h3>
-                        <p class="text-sm sm:text-base text-gray-300">${item.date}</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-1">${item.title}</h3>
+                        <p class="text-sm sm:text-base text-gray-400">${item.date}</p>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Display Random Reason
+        // Display Reason
         function displayReason() {
             const card = document.getElementById('reasonCard');
             if (currentReasonIndex < reasonsData.length) {
@@ -334,8 +344,8 @@
                 
                 currentReasonIndex++;
             } else {
-                card.textContent = "You've reached the end! 💕 And infinite more reasons...";
-                card.style.opacity = '0.7';
+                card.textContent = "And infinite more reasons...";
+                card.style.opacity = '0.8';
             }
         }
 
@@ -352,19 +362,6 @@
             });
         }
 
-        // Toggle Theme
-        function toggleTheme() {
-            isDark = !isDark;
-            const theme = document.documentElement;
-            if (isDark) {
-                theme.style.filter = 'invert(0)';
-                document.getElementById('themeToggle').textContent = '🌙';
-            } else {
-                theme.style.filter = 'invert(1) hue-rotate(180deg)';
-                document.getElementById('themeToggle').textContent = '☀️';
-            }
-        }
-
         // Create Floating Hearts
         function createFloatingHearts() {
             const container = document.getElementById('heartsContainer');
@@ -376,7 +373,7 @@
             heart.style.left = Math.random() * 100 + '%';
             heart.style.top = '-20px';
             heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.opacity = Math.random() * 0.5 + 0.2;
             heart.style.animation = `float ${Math.random() * 3 + 3}s ease-in-out forwards`;
             heart.style.animationDelay = Math.random() * 0.5 + 's';
             
@@ -385,12 +382,7 @@
             setTimeout(() => heart.remove(), 6000);
         }
 
-        // Reason Card Click
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('reasonCard')?.addEventListener('click', displayReason);
-        });
-
-        // Add reason card click listener after page load
+        // Add reason card click listener
         window.addEventListener('load', () => {
             document.getElementById('reasonCard').addEventListener('click', displayReason);
         });
