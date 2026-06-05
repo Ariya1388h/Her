@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/her-surprise/',
+  base: '/Her/',
   build: {
     outDir: 'dist',
     sourcemap: false,
